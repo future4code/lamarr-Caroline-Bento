@@ -1,3 +1,0 @@
-# Aprendizados da semana
-
-Essa semana aprendi usar terminal e como é **super** importante prestar atenção em cada etapa. Entendi que cada um tem p seu tempo e deve ser respeitado sempre; que o terminal é muito criterioso sobre os seus comandos e sempre vai entender de forma literal, então é preciso ter **muita** paciência e atenção. Ainda quero aprender ter a calma do Gui, isso ainda preciso trabalhar!
