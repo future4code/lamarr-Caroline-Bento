@@ -114,12 +114,31 @@ function retornaPessoaAnonimizada(pessoa) {
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   ;
-}
+    
+    let totalPessoasAutorizadas = []
+    
+    for (let pessoasAut of pessoas) {
+        if (
+            pessoasAut.altura >= 1.5 && pessoasAut.idade > 14 && pessoasAut.idade < 60
+        ){ totalPessoasAutorizadas.push(pessoasAut)
+    }}
+    return totalPessoasAutorizadas
 
+}
+        
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+    
+    let totalPessoasNaoAutorizadas = []
+    
+    for (let pessoasNaoAut of pessoas) {
+        if (
+            pessoasNaoAut.altura >= 1.5 && pessoasNaoAut.idade > 14 && pessoasNaoAut.idade < 60
+        ){ 
+            totalPessoasNaoAutorizadas.push(pessoasAut)
+    }}
+    return totalPessoasNaoAutorizadas
+    
 }
 
 // EXERCÍCIO 14
