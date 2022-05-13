@@ -1,0 +1,29 @@
+Os 7 passos fundamentais para resolução de problemas
+
+No presente módulo foi estudado os passos para ter um resultado favorável ao nosso desenvolvimento. Ao meu ver, o 
+principal requisito para seguir esses passos com êxito é manter a organização de pensamentos - o que é bem difícil
+para a maioria das pessoas.
+Os sete passos são:
+1° Ter atenção no enunciado: É preciso ler com calma e quantas vezes forem necessárias para conseguir fragmentar o 
+enunciado e retornar o que ele espera.
+
+2° Retirar Informações Relevantes: Da fragmentação do enunciado, é possível identificar as partes importantes para 
+a criação do código.
+
+3° Pensar entradas e saídas: Nesse passo o dev vai observar as informações juntadas e "mapeá-las" para separar em
+"informações que deve mostrar ao código" e "informações que devem retornar ao usuário".
+
+4° Fazer um esquema visual: Depois que reuniu todas as informações importantes e as distinguiu, agora é preciso 
+visualizar a sequencia do código. Isso pode ser feito por Diagramas, mapas mentais ou escrevendo com portugol, tudo 
+que fique mais fácil para colocar seu código no passo seguinte.
+
+5° Criar código feio: Agora é hora de criar um projeto de código que vai ser testado. Já definiu seus passos, agora é 
+concretizá-lo. Nessa etapa, a gente cria o "esqueleto" do código.
+
+6° Testar força-bruta: Aqui vai ser testado o código e ver se, embora ser feio, é funcional!
+
+7° Refatorar: Por útimo, mas não menos importante, vai ser feito o refatoramento do código, ou seja, vamos olhar ele
+e perceber uma outra forma de escrever que seja simples e mais "bonita", gastando menos linhas e sendo mais específico.
+
+Passar por essas etapas é importante para criar uma linha de raciocínio e ter melhores resultados. Acredito que se
+mantermos a organização de pensamento a evolução é mais contínua.
