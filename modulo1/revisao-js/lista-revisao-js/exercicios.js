@@ -91,7 +91,10 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-    
+    array.sort((a, b) => a - b)
+    let segundoMenor = array [1]
+    let segundoMaior = array[array.length - 2]
+    return [segundoMaior, segundoMenor]
 }
 
 // EXERCÍCIO 11
@@ -129,29 +132,44 @@ function retornaPessoasAutorizadas(pessoas) {
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
     
-    let totalPessoasNaoAutorizadas = []
-    
-    for (let pessoasNaoAut of pessoas) {
-        if (
-            pessoasNaoAut.altura >= 1.5 && pessoasNaoAut.idade > 14 && pessoasNaoAut.idade < 60
-        ){ 
-            totalPessoasNaoAutorizadas.push(pessoasAut)
-    }}
-    return totalPessoasNaoAutorizadas
+    let pessoasNaoAut = pessoas.filter((pessoa) =>{
+        return pessoa.altura < 1.5 || pessoa.idade <= 14 || pessoa.idade > 60
+    })
+    return pessoasNaoAut
     
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
+    contas.forEach((contaUsuario) => {
+        let totalCompras = 0
 
+        contaUsuario.compras.forEach(( compra) => {
+            totalCompras = totalCompras + compra 
+        })
+        contaUsuario.compras = []
+        contaUsuario.saldoTotal = contaUsuario.saldoTotal - totalCompras
+    })
+    return contas
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
+    return consultas.sort(function (a, b) {
+        if (a.nome > b.nome){
+            return 1
+        }else if (a.nome < b.nome){
+            return -1
+        }
+    })
   
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+   let datasConsulta =  consultas.sort(function(a, b) {
+       a = fDate(a)
+       b = fDate(b)
+   })
+   return datasConsulta
 }
