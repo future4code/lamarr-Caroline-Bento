@@ -1,6 +1,24 @@
-.cabecalho {
+*{
+    flex-wrap: wrap;
+}
+
+.center {
     background-color: rgb(87, 126, 211);
     color: white;
     height: 200px;
     width: 100%;
+}
+
+.logo img {
+    width:100%;
+    max-width: 150px;
+    position: relative;
+    left: 1050px
+
+
+}
+.center h1 {
+    color: black;
+    margin-top: 60px
+
 }
