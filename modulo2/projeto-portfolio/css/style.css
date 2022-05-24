@@ -16,7 +16,7 @@ header {
     background-color: rgb(245, 202, 11)
 }
 body {
-    background-color:rgb(49, 49, 49);
+    background-color:rgb(12, 11, 11);
 }
 
 html,body{
@@ -29,6 +29,7 @@ header{
 }
 
 .logo {
+    cursor: pointer;
     width: 50%
 }
 
@@ -47,6 +48,7 @@ header{
     font-size: 18px;
     margin-right: 60px;
     margin-inline-end: 500;
+    cursor: pointer;
 }
 
 .sobre-mim {
@@ -73,4 +75,67 @@ header{
     left: 50%;
     top: 20%;
     
+}
+
+.box {
+    margin: auto;
+    width: 500px;
+    background: rgb(24, 23, 23);
+    position: relative;
+    top: 60px;
+    border: 3px solid rgb(0, 0, 0);
+    color: rgb(255, 251, 251);
+    font-family: tahoma;
+}
+
+.box label {
+    width: 100%;
+    display: block;
+    background:rgb(49, 48, 43);
+    border-top:1px solid #262626;
+    border-bottom: 1px solid black;
+    padding: 10px 0 10px 0;
+    
+}
+
+.box label span {
+    display: block;
+    margin: 10px 0 10px 5%;
+    color: white;
+    font-size: 12px;
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding: 5px 20px 0 0;
+}
+.box .inputText {
+    padding: 10px 10px;
+    width: 250px;
+    background:white;
+    border-bottom: 1px double black;
+    border-top: 1px double rgb(0, 0, 0);
+    border-left:1px double rgb(0, 0, 0);
+    border-right:1px double black;
+}
+.box .message {
+    padding: 8px 8px;
+    width: 300px;
+    background: white;
+    border: 2px double black;
+    overflow: hidden;
+    height: 150px;
+}
+
+.box .button {
+    margin: 0px 0px 10px 0px;
+    padding: 4px 10px;
+    border:0px;
+    position: relative;
+    top: 10px;
+    left: 380px;
+    width: 100px;
+    background-color: rgb(245, 202, 11);
+    color: white;
+    
+    cursor: pointer;
 }
