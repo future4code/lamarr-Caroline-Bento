@@ -50,6 +50,9 @@ img {
 
 .menu li a { 
     color: white;
+    margin-top: 30px;
+    margin-left: 15px;
+    font-size: 14px;
     text-decoration: none;
 }
 
@@ -92,4 +95,32 @@ footer {
 footer img{
     width: 3%;
 
+}
+table{
+    border: solid
+}
+
+.produtos-descricao{
+    font-style: bold;
+    
+}
+
+form {
+    margin: top 70px;;
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    
+    margin: 0 auto;
+}
+form [type="submit"] {
+    height: 50px;
+    width: 50%;
+    font-weight: bold;
+    margin: auto;
+}
+
+funcionarios {
+    font-weight: bold;
 }
