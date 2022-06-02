@@ -1,0 +1,25 @@
+INÍCIO
+- quem sou eu
+- instituições
+- empregos
+
+GALERIA
+- projetos feitos
+	- pág para cada projeto
+		- imagem
+		- titulo
+		- descrição
+		- lista de tecnologias
+HABILIDADES
+- tecnicas
+- comportamentais
+	- texto breve descritivo
+
+CONTATO
+- formulário (nome, email e texto)
+- links redes sociais
+	- linkedin
+	- github
+	- email
+	- twitter
+
