@@ -1,0 +1,126 @@
+body {
+    background-color: rgb(34 34 34);
+    color: white;
+    font-family: verdana;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    width:100%;
+    height: 10rem;
+    background-color: grey;
+}
+
+header {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+#nome-loja {
+    margin-top: 80px;
+    position: absolute;
+    left: 150px;
+    color:rgb(37, 37, 245);
+    font-family: 'Courier New';
+    font-size: 50px;
+    font-weight: bold;
+
+}
+
+img {
+    width: 20%;
+    margin-right: 30px;
+    
+}
+
+.menu {
+    margin-top: 20px;
+    font-size: 'Courier New';
+    
+}
+
+.menu li {
+    display: inline-block;
+    margin: 15px;
+}
+
+.menu li a { 
+    color: white;
+    margin-top: 30px;
+    margin-left: 15px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.menu li a:hover { 
+    color: rgb(37, 37, 245);
+    transition: all 0.5;
+}
+
+#chamada {
+    margin-top: 50px;
+    font-size:26px;
+}
+
+h2{
+    margin-top: 40px;
+}
+
+.imagens {
+    display: inline-block;
+    margin-top: 40px;
+    background-color: white;
+
+}
+.imagens img {
+    display: inline-block;
+    width: 16%;
+    margin-top: 50px;
+}
+
+#frete {
+    margin-top: 60px;
+}
+
+
+footer {
+    background-color: grey;
+    display: inline-block;
+    margin-right: 20px; 
+}
+footer img{
+    width: 3%;
+
+}
+table{
+    border: solid
+}
+
+.produtos-descricao{
+    font-style: bold;
+    
+}
+
+form {
+    margin: top 70px;;
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    
+    margin: 0 auto;
+}
+form [type="submit"] {
+    height: 50px;
+    width: 50%;
+    font-weight: bold;
+    margin: auto;
+}
+
+funcionarios {
+    font-weight: bold;
+}
