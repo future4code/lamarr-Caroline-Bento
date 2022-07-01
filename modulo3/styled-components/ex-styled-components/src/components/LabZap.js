@@ -29,18 +29,16 @@ const Main = styled.main `
     `
 const Conteudo = styled.div `
     width: 100%;
-    height: 100%;
-    margin-top: 48vh;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    align-self: flex-end;
+    margin-top: 65vh
     `
 const ConteudoLaranja = styled.div `
     background-color: orange;
     height: 100%;
     padding:100% 0;
-    
 `
 
 const Input = styled.input `
@@ -48,10 +46,11 @@ const Input = styled.input `
     padding: 0.3em;
     width: 45%;
     border-radius: 0.5em;
-    border: 1px solid
+    border: 1px solid;
+    
 `
 const InputRemetente = styled.input `
-    margin:1em;
+    margin:0 1em;
     padding: 0.3em;
     width: 20%;
     border-radius: 0.5em;
