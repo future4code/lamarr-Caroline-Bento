@@ -30,7 +30,7 @@ const Main = styled.main `
 const Conteudo = styled.div `
     width: 100%;
     height: 100%;
-    margin-top: 32%;
+    margin-top: 48vh;
     display: flex;
     align-items: center;
     justify-content: center;
