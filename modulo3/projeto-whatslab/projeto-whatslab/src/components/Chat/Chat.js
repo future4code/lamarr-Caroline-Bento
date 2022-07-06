@@ -4,7 +4,7 @@ import Talk from './Talk/Talk'
 const Container = styled.div `
     display: grid;
     grid-template-columns: 2fr 4fr 2fr;
-    font-size: verdana;
+    
 
 `
 const ChatContainer = styled.div `
@@ -12,13 +12,18 @@ const ChatContainer = styled.div `
     flex-direction: column-reverse;
     border: 2px solid;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: #F5F5DC;
+    
 `
 const Balloon = styled.div `
     position: absolute;
-    left: 52%;
-    bottom:10%;
-    
+    bottom: 5em;
+    right: 35em;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    justify-content: flex-end;
 
 
 `
@@ -26,8 +31,8 @@ const Box = styled.div `
     display: flex;
     align-items: flex-end;
     height: 100%;
-    background-color: #F5F5DC;
     padding: 1em 0;
+   
 
 `
 

@@ -1,14 +1,17 @@
 import React from 'react';
 import Chat from './components/Chat/Chat';
+import styled from 'styled-components'
 
+const BackgroundChat = styled.div `
 
+`
 
 function App() {
   return (
-    <div className="App">
+    <BackgroundChat>
         <Chat/>
         
-    </div>
+    </BackgroundChat>
   );
 }
 
