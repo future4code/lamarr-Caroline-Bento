@@ -4,7 +4,7 @@ import Talk from './Talk/Talk'
 const Container = styled.div `
     display: grid;
     grid-template-columns: 2fr 4fr 2fr;
-    
+    align-items: flex-end;
 
 `
 const ChatContainer = styled.div `
@@ -15,16 +15,15 @@ const ChatContainer = styled.div `
     min-height: 100vh;
     background-color: #F5F5DC;
     
+    
 `
 const Balloon = styled.div `
-    position: absolute;
-    bottom: 5em;
-    right: 35em;
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
     justify-content: flex-end;
-
+    height: 100%;
+    
 
 `
 const Box = styled.div `
@@ -78,12 +77,16 @@ function Chat(){
         const newMessage = { 
             name: senderName,
             msg: message,
+            time: new Date().toLocaleTimeString('pt-br', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+            }) 
         }
         setNewMessageSander(prevState =>[...prevState, newMessage])
     };
 
-    
-
+   
     return (
         <Container>
             <Conteudo>
@@ -95,7 +98,7 @@ function Chat(){
             <Box>
                 
                 <Sender>
-                    <Label for="sender"></Label>
+                    <Label htmlFor="sender"></Label>
                     <Input 
                     type="text" 
                     id="sender"
@@ -103,20 +106,22 @@ function Chat(){
                     onChange= {event => setSanderName(event.target.value)}/>
                 </Sender>
                 <Message>
-                    <Label for="message"></Label>
-                    <Input type="text"  
+                    <Label htmlFor="message"></Label>
+                    <Input type="text" 
                     id="message" 
                     placeholder='Type a message here...'
                     onChange={event => setMessage(event.target.value)}/>
                 </Message>
-                <Submit type='button' onClick={handleMessage}>Enviar</Submit>
+                <Submit type='button' onClick={handleMessage}>
+                    Enviar
+                </Submit>
             </Box>
-             <Balloon>
+            <Balloon>
 
                 {
                     namesSender.map(messageSending => (
                         <Talk 
-                            key={messageSending.msg}
+                            key={messageSending.time}
                             name={messageSending.name} 
                             messageReceived={messageSending.msg} 
                         />) )
