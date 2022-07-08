@@ -19,13 +19,22 @@ const ChatContainer = styled.div `
 `
 const Balloon = styled.div `
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content:  flex-end;
+    height: 100%; 
+    
+`
+const BalloonOuther = styled.div `
+    display: flex;
+    flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
-    height: 100%;
+    height: 100%; 
     
-
 `
+
+
 const Box = styled.div `
     display: flex;
     align-items: flex-end;
@@ -72,7 +81,9 @@ function Chat(){
     const [senderName,setSanderName] = useState('');
     const [namesSender, setNewMessageSander] = useState([]);
     const [message,setMessage] = useState('');
+    const [nameBalloon,setNameBalloon] = useState();
 
+    
     function handleMessage () {
         const newMessage = { 
             name: senderName,
@@ -85,8 +96,7 @@ function Chat(){
         }
         setNewMessageSander(prevState =>[...prevState, newMessage])
     };
-
-   
+    
     return (
         <Container>
             <Conteudo>
@@ -102,7 +112,7 @@ function Chat(){
                     <Input 
                     type="text" 
                     id="sender"
-                    placeholder='Sender name...'
+                    placeholder='Sender name...'                  
                     onChange= {event => setSanderName(event.target.value)}/>
                 </Sender>
                 <Message>
@@ -116,17 +126,19 @@ function Chat(){
                     Enviar
                 </Submit>
             </Box>
+            
             <Balloon>
 
                 {
                     namesSender.map(messageSending => (
-                        <Talk 
-                            key={messageSending.time}
-                            name={messageSending.name} 
-                            messageReceived={messageSending.msg} 
-                        />) )
+                    <Talk 
+                    key={messageSending.time}
+                    name={messageSending.name}  
+                    messageReceived={messageSending.msg}   
+                    />) )
                 }
             </Balloon>
+
             </ChatContainer>
             <Conteudo>
                 
