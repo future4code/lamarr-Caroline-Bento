@@ -1,22 +1,15 @@
-import React, {useState}from 'react'
+import React, {useState} from 'react'
+import SectionComSuperior from '../SectionComSuperior/SectionComSuperior'
+import SectionSemSuperior from '../SectionSemSuperior/SectionSemSuperior'
 import SectionAgradecimento from '../SectionAgradecimento/SectionAgradeciomento';
 function DadosGerais () {
     const [inputName, setInputName] = useState('');
     const [inputYear, setInputYear] = useState('');
     const [inputEmail, setInputEmail] = useState('');
     const [inputSchooling, setInputSchooling] = useState('');
-    const [completedForm, setCompletedForm] = useState('');
+  
     
-    function handleForm () {
-        const formFilled = {
-            name: inputName, 
-            years: inputYear,
-            email: inputEmail,
-        }
-        
-        setCompletedForm(prevState => [...prevState, ...formFilled])
-    }
-
+ 
 
   return (
     <div>
@@ -50,10 +43,6 @@ function DadosGerais () {
             <option value="superiorIncompleto">Ensino Superior Incompleto</option>
             <option value="superiorCompleto">Ensino Superior Completo</option>
         </select>
-
-        <button type= 'button' onClick={handleForm}>Enviar</button>
-
-
       </form>
     </div>
   );
