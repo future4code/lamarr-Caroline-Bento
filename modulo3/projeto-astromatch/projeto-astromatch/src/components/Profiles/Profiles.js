@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import { FaCheckCircle } from "react-icons/fa";
 import { RiCloseCircleFill } from "react-icons/ri";
@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const ContainerProfiles = styled.div `
     width: 25em;
-    height:50%;
+    height:40%;
     margin: 1em; 
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@ const ContainerProfiles = styled.div `
 
     img{
         max-width: 85%;
-        max-height: 65%;
+        max-height: 60%;
         border-radius: 5%;
         
     }
@@ -52,8 +52,9 @@ const ButtonCheck = styled.button `
 const BoxButtons = styled.div `
     display: flex;
     margin: 3em;
-    align-items: flex-end;
     
+    justify-items: center;
+    text-align: center;
     gap: 5em;
    
 
@@ -62,7 +63,7 @@ const BoxButtons = styled.div `
 const ButtonNoCheck = styled.button `
     background: none;
     border: none;
-    font-size: 5.6em;
+    font-size: 5.8em;
     color: #B22222;  
 `
 
@@ -77,9 +78,13 @@ function Profiles (props) {
         }
         axios.post(choosePersonUrl, body)
             .then((response) => {
-                props.getProfiles()
+                if(response.data.isMatch === true){
+                    alert('Deu Match, guerreire!')
+                } else {
+                    alert('Não foi dessa vez, mas um bom brasileiro não desiste nunca!')
+                }
                 console.log(response.data.isMatch)
-                console.log(props.controlMatch)
+                props.getProfiles()
             })
             .catch((error) => {
                 console.log(error.message)
@@ -102,8 +107,7 @@ function Profiles (props) {
                 console.log("Deu ruim", error.data)
             })
     }
-    console.log(props.profile[0])
-    
+        
 
     return (
         <ContainerProfiles>

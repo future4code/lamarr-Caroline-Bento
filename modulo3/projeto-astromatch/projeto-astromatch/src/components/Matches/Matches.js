@@ -6,15 +6,28 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 const ContainerAllMatches = styled.div `
     color: #000000;
-    button{
-        font-size: 3em;
-        background: none;
-        color: #FFEBCD;
-        border: none;
-        display: flex;
-        justify-items: flex-end;
-        align-items: flex-end;
+    p {
+        text-align: center;
     }
+    h3{
+        margin:1em;
+    }
+    button{
+        display: flex;
+        align-items: center;
+        padding: .3em;
+        margin: 3em 0 0 2em;
+        font-size: 2em;
+        background-color: #FFEBCD;
+        color: #000000;
+        border: none;
+        border-radius:.2em;
+
+        span {
+            font-size: 0.4em;
+        }
+    }
+
     
 `
 
@@ -29,15 +42,12 @@ const ContainerMatches = styled.div `
 `
 
 function Matches (props) {
-    const matchesUrl = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/matches"
-    const matchesClearUrl = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/clear'
-   
-    const putMatches =  axios.put(matchesClearUrl)
-
+    
+    
     const [matchList, setMatchList] = useState([])
     
     function listMatches(){
-        axios.get(matchesUrl)
+        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/matches")
         .then((response) => {
             setMatchList(response.data.matches)
             console.log(response.data.matches)
@@ -51,11 +61,11 @@ function Matches (props) {
     useEffect(() => {listMatches()}, [])
 
     function clearMatches () {
-       putMatches
+        axios.put('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/clear')
             .then((response) => {
+                props.getProfiles()
                 alert("Seus pretendentes estão prontos para serem renovados!")
                 console.log(response.data)
-                props.getProfiles()
             })
             .catch((error) => {
             
@@ -80,21 +90,25 @@ function Matches (props) {
         )
     })
 
+   
+        return <ContainerAllMatches>
+        <h4>
+            Aqui estão os amores da sua vida em potencial!
+        </h4>
+        <p>
+            Divirta-se (ou não)!
+        </p>
+        {renderPerson}
 
+        <button onClick = {()=>clearMatches()}>
+            < RiDeleteBin6Line/>
+            <span>
+                Deletar todos matches
+            </span>
+        </button>
+    </ContainerAllMatches>
+    }
 
-    
-    return (
-        <ContainerAllMatches>
-
-            {renderPerson}
-
-            <button onClick = {()=>clearMatches()}>
-                deletar
-            </button>
-        </ContainerAllMatches>
-    )
-
-}
 
 
 export default Matches;

@@ -33,7 +33,6 @@ const Header = styled.div `
 function App() {
 
 const [chooseProfile, setChooseProfile] = useState([])
-const [controlMatch, setControlMatch] = useState(0)
 const [upClick, setUpClick] = useState(0)
 
 
@@ -41,9 +40,10 @@ const [upClick, setUpClick] = useState(0)
 function getProfiles () {
   const urlGet = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/person"
   const getUsers = axios.get(urlGet)
+  
   getUsers
     .then((response) => {
-      setChooseProfile([response.data])
+      setChooseProfile(response.data.profile)
     
       console.log('atualizou')
     })
@@ -54,8 +54,6 @@ function getProfiles () {
 }
 
 useEffect(() => {getProfiles()}, [])
-
-console.log(chooseProfile)
 
 
 function clickProfiles () {
