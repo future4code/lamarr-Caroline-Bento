@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components'
 import { FaCheckCircle } from "react-icons/fa";
 import { RiCloseCircleFill } from "react-icons/ri";
@@ -67,37 +67,43 @@ const ButtonNoCheck = styled.button `
 `
 
 function Profiles (props) {
-    const id = props.profile.id
     const choosePersonUrl = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/choose-person"
+    const id = props.profile.id
 
     function likePerson() {
         const body = {
-            id: id,
-            choice: true
+            'id': id,
+            'choice': true
         }
         axios.post(choosePersonUrl, body)
             .then((response) => {
-                console.log("Deu bom!")
-                props.setControlMatch(props.controlMatch + 1)
+                props.getProfiles()
+                console.log(response.data.isMatch)
+                console.log(props.controlMatch)
             })
             .catch((error) => {
                 console.log(error.message)
             })
     }
+    
+
     function deslikePerson () {
         const body = {
-            id: id,
-            choice: false
+            'id': id,
+            'choice': false
         }
         axios.post(choosePersonUrl, body)
             .then((response) => {
                 console.log("Certo, vamos para o próximo perfil, porque a madame é exigente!")
-                props.setControlMatch(props.controlMatch + 1) 
+                console.log(response.data.isMatch)
+                props.getProfiles() 
             })
             .catch ((error) => {
-                console.log("Deu ruim")
+                console.log("Deu ruim", error.data)
             })
     }
+    console.log(props.profile[0])
+    
 
     return (
         <ContainerProfiles>
@@ -117,10 +123,10 @@ function Profiles (props) {
             
 
             <BoxButtons>
-                <ButtonCheck onClick={likePerson}>
+                <ButtonCheck onClick={() => likePerson()}>
                     <FaCheckCircle />
                 </ButtonCheck>
-                <ButtonNoCheck onClick={deslikePerson}>
+                <ButtonNoCheck onClick={() => deslikePerson()}>
                     <RiCloseCircleFill />
                 </ButtonNoCheck>
             </BoxButtons>

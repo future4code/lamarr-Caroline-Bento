@@ -35,38 +35,28 @@ function App() {
 const [chooseProfile, setChooseProfile] = useState([])
 const [controlMatch, setControlMatch] = useState(0)
 const [upClick, setUpClick] = useState(0)
-const [matchList, setMatchList] = useState([])
-const [upList,setUpList] = useState(0)
 
-const urlGet = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/person"
-const getUsers = axios.get(urlGet)
 
-function profileCallback() {
-  getUsers.then((response) => {
-    setChooseProfile([response.data])
-    console.log ('atualizou')
-  })
-  .catch((error) => {
-    alert("Tente novamente. Erro")
-    console.log(error.data)
-  })
+
+function getProfiles () {
+  const urlGet = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/person"
+  const getUsers = axios.get(urlGet)
+  getUsers
+    .then((response) => {
+      setChooseProfile([response.data])
+    
+      console.log('atualizou')
+    })
+    .catch((error) => {
+      alert("Tente novamente. Erro")
+      console.log(error.data)
+    })
 }
 
-useEffect(() => {profileCallback()}, [controlMatch])
+useEffect(() => {getProfiles()}, [])
 
+console.log(chooseProfile)
 
-
-const callProfile = (person, index) => {
-  return (
-    <Profiles
-    key={index}
-    profile={person.profile}
-    controlMatch={controlMatch}
-    setControlMatch={setControlMatch}
-    />
-  )
-}
-const filterProfile = chooseProfile.map(callProfile)
 
 function clickProfiles () {
   setUpClick(!upClick)
@@ -86,10 +76,7 @@ if (upClick) {
         </Header>
         
         <Matches
-        matchList={matchList}
-        upList={upList}
-        setMatchList={setMatchList}
-        setUpList={setUpList}
+          getProfiles={getProfiles}
         />
 
 
@@ -106,12 +93,16 @@ else {
           <h1>
             AstroMatch
           </h1>
-          <button onClick={clickProfiles}>
+          <button onClick={() => clickProfiles()}>
             <RiUserHeartLine />
           </button>
         </Header>
         
-        {filterProfile}
+        {chooseProfile && <Profiles
+          profile={chooseProfile}
+          getProfiles={getProfiles}
+        />
+        }
 
 
         <GlobalStyles />

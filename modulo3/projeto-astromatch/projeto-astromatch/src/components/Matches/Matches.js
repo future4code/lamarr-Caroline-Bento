@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components'
 import axios from 'axios'
 import { RiDeleteBin6Line } from "react-icons/ri";
+
 
 const ContainerAllMatches = styled.div `
     color: #000000;
@@ -30,33 +31,31 @@ const ContainerMatches = styled.div `
 function Matches (props) {
     const matchesUrl = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/matches"
     const matchesClearUrl = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caroline-bento-lamarr/clear'
-    const getMatches = axios.get(matchesUrl)
+   
     const putMatches =  axios.put(matchesClearUrl)
 
+    const [matchList, setMatchList] = useState([])
     
-    function personMatch () {
-        
-        getMatches
-        .then((response) => { 
-            props.setMatchList(response.data.matches)
+    function listMatches(){
+        axios.get(matchesUrl)
+        .then((response) => {
+            setMatchList(response.data.matches)
             console.log(response.data.matches)
+            
         })
         .catch((error) => {
-            console.log("Deu ruim aqui", error.data)
+            console.log("Deu ruim aqui. Erro:", error.message)
         })
-        
-    }
 
-    useEffect (() => {
-        personMatch()
-    }, [props.upList])
+    }
+    useEffect(() => {listMatches()}, [])
 
     function clearMatches () {
        putMatches
             .then((response) => {
                 alert("Seus pretendentes estão prontos para serem renovados!")
                 console.log(response.data)
-                props.setUpList(props.upList + 1)
+                props.getProfiles()
             })
             .catch((error) => {
             
@@ -64,27 +63,33 @@ function Matches (props) {
             })
     }
     
-    function listPersonMatch (person, index) {
+  
+
+    const renderPerson = matchList && matchList.map((person)=>{
         return (
-            <ContainerMatches key={index}>
-                <img src={person.photo}
-                alt={person.name}/>
-                <span>
+            <ContainerMatches key={person.id}>
+                <img 
+                    src={person.photo}
+                    alt={person.name}
+                />
+                <p>
                     {person.name}, {person.age}
-                </span>
+                </p>
                 
             </ContainerMatches>
         )
-    }
+    })
 
-    const renderPerson = props.matchList.map(listPersonMatch)
+
 
     
     return (
         <ContainerAllMatches>
+
             {renderPerson}
-            <button onClick = {clearMatches}>
-                <RiDeleteBin6Line/>
+
+            <button onClick = {()=>clearMatches()}>
+                deletar
             </button>
         </ContainerAllMatches>
     )
