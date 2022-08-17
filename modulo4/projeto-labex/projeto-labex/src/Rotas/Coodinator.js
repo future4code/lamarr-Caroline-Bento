@@ -3,7 +3,7 @@ export const homePage = (navigate) => {
 }
 
 export const tripList = (navigate) => {
-    navigate('trip/list')
+    navigate('trips/list')
 }
 
 export const application = (navigate) => {

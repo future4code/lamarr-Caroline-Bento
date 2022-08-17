@@ -14,7 +14,7 @@ function Rotas (){
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
-                <Route path="/trip/list" element={<ListTripsPage/>}/>
+                <Route path="/trips/list" element={<ListTripsPage/>}/>
                 <Route path="/application" element={<ApplicationFormPage/>}/>
                 <Route path="/login" element={<LoginPage/>}/>
                 <Route path="/admin/trip/list" element={<AdminHomePage/>}/>
