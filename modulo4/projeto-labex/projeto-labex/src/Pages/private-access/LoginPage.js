@@ -12,8 +12,14 @@ function LoginPage() {
   const loginUser = (e) => {
     e.preventDefault()
     axios.post(`${baseUrl}login`, form)
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log(error.message))
+      .then((response) => {
+        localStorage.setItem('token', response.data.token)
+        navigate('/admin/trip/list')
+        console.log(response.message)})
+      .catch((error) => {
+        alert('email não cadastrado. Por favor, confira os dados inseridos.')
+        console.log(error.message)
+      })
 
     clear()
   }

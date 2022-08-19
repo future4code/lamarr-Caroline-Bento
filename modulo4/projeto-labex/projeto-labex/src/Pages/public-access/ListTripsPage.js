@@ -8,7 +8,7 @@ function ListTripsPage() {
   const navigate = useNavigate();
   const [dataTripList, loadingList, errorTrips] = useRequestData(`${baseUrl}trips`)
  
-  const tripList = dataTripList && dataTripList.trips.map((trip) =>{
+  const tripList = dataTripList && dataTripList.trips.map((trip) => {
     return (
       <li key={trip.id}>{trip.name}</li>
     )

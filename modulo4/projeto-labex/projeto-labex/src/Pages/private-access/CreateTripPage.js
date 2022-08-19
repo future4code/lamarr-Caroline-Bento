@@ -3,13 +3,20 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom'
 import { baseUrl } from '../../constants/constants';
 import { useForm } from '../../hooks/useForm';
+import { useProtectedPage } from '../../hooks/useProtectedPage';
 import * as RoutePages from '../../Rotas/Coodinator'
+
 function CreateTripPage() {
+  useProtectedPage()
   const navigate = useNavigate()
   const [form, onChange, clear] = useForm({name:'', planet:'', date:'', description: '', durationInDays: ''})
   const createTrips = (e) => {
     e.preventDefault()
-    axios.post(`${baseUrl}trips`, form)
+    const token = localStorage.getItem('token')
+    axios.post(`${baseUrl}trips`, form, {
+      headers: {
+        auth: token
+      }})
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error.message))
 
