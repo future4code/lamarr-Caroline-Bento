@@ -1,39 +1,156 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import * as RoutePages from '../../Rotas/Coodinator'
+import styled from 'styled-components'
+import {useForm} from '../../hooks/useForm'
+import { baseUrl } from '../../constants/constants';
+import axios from 'axios';
+const ContainerForm = styled.div `
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1{
+    margin: 1.3em 0;
+    text-align: center;
+  }
+`
+const Form = styled.form `
+  display: flex;
+  margin: 1em 0;
+  padding: 1.5em;
+  width: 35%;
+  flex-wrap: wrap;
+  border: 2px solid ;
+  border-radius: 1em;
+
+  select{
+    width: 90%;
+    margin: .3em 0;
+    padding: .4em ;
+    border: none;
+    border-radius: 0.5em;
+  }
+  label{
+    margin: .5em 0 0 0;
+  }
+  input {
+    width: 90%;
+    margin: .3em 0;
+    padding: .4em ;
+    border: none;
+    border-radius: 0.5em;
+  }
+`
+const InputText = styled.input `
+    height: 4em;
+`
+const Button = styled.button`
+  margin:2em 1em;
+  width: 20%;
+  cursor: pointer;
+  &:hover{
+    color: #fff;
+    background-color: #0d0b4a;
+    transition: .5s;
+  }
+`
 
 function ApplicationFormPage() {
   const navigate = useNavigate();
+  const pathParams = useParams();
+  const [form, onChange, clear] = useForm({name:'', age:'', applicationText:'', profession:'', country:''})
+  
+  const applicationTrip = (e) => {
+    e.preventDefault()
+    axios.post(`${baseUrl}trips/${pathParams.id}/apply`, form)
+    .then((response) => {
+      alert('Pronto! Inscrição finalizada e enviada. Boa sorte!')
+      console.log(response.message)
+    })
+    .catch ((error) => {
+      alert('Ops... Algo deu errado. Tente novamente, por favor.')
+      console.log(error.message)})
+      clear()
+  }
 
     return (
-      <div>
+      <ContainerForm>
         <h1>
-            Preencha o formulário
+            Inscreva-se para sua viagem dos sonhos
         </h1>
-        <form>
+        <Form onSubmit={applicationTrip}>
+        
           <label htmlFor="nameUser">
-            Nome
+            Nome Completo:
           </label>
           <input 
+          id='nameUser'
           name="nameUSer"
           type="text"
+          value = {form.name}
+          onChange={onChange}
+          
+          required
           />
           <label htmlFor="ageUser">
-            Idade
+            Idade: (min. 18 anos)
           </label>
           <input 
+          id="ageUser"
           name = "ageUser"
           type= "number"
           min={18}
+          value = {form.age}
+          onChange={onChange}
+          required
           />
-        </form>
-        <button onClick={()=>RoutePages.toBack(navigate)}>
+          <label htmlFor = "profession">
+            Profissão:
+          </label>
+          <input
+          id="profession"
+          name="profession"
+          type="text"
+          value = {form.profession}
+          onChange={onChange}
+          pattern='^.{6,}$'
+          title='Min. de 6 caracteres'
+          required
+          />
+          <label htmlFor = "country">
+            País onde mora
+          </label>
+          <input
+          name="country"
+          id="country"
+          type="text"
+          value = {form.country}
+          onChange={onChange}
+          
+          required
+          />
+          <label htmlFor = "textApplication">
+            Diga, em poucas palavras, o por que de ser escolhido:
+          </label>
+          <InputText
+          name="textApplication"
+          id="textApplication"
+          type="text"
+          value = {form.applicationText}
+          onChange={onChange}
+          pattern='^.{6,}$'
+          title='Min. de 6 caracteres'
+          required
+          />
+        <Button onClick={()=>RoutePages.toBack(navigate)}>
             voltar
-        </button>
-        <button>
+        </Button>
+        <Button type="submit">
             enviar
-        </button>
-      </div>
+        </Button>
+        </Form>
+      </ContainerForm>
     );
   }
   
