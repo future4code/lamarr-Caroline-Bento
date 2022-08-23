@@ -6,45 +6,62 @@ import {useRequestData} from '../../hooks/useRequestData';
 import styled from 'styled-components'
 
 const ContainerPageTrips = styled.div `
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   h1{
     text-align: center;
     padding: 1em 0;
+    background-color: rgba(13, 11, 74, 0.8);
+    width: 100%;
   }
+  div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+  
 `
 const ContainerAllTrips = styled.div `
-  margin: 0 0 4em 1em;
+  display: flex;
+  margin: 0 0 4em 0;
+  flex-direction: column;
+  align-items: flex-end;
   border: 2px solid #FFFAFA;
-  width: 80%;
+  border-radius: 1.5em;
+  width: 40%;
   padding: 1em;
+  background-color: rgba(1, 0, 18, 0.8);
   
 `
 const Button = styled.button`
   
   margin:2em 1em;
-  width: 15%;
+  width: 20vw;
+  
   cursor: pointer;
   &:hover{
     color: #fff;
-    background-color: #0d0b4a;
+    background-color: rgba(56, 59, 87, 0.6);
     transition: .5s;
   }
 `
 const ButtonTrip = styled.button`
   
   margin:2em 1em;
-  width: 15%;
+  width: 20vw;
   cursor: pointer;
   &:hover{
     color: #fff;
-    background-color: #0d0b4a;
+    background-color: rgba(56, 59, 87, 0.6);
     transition: .5s;
   }
 `
 const Footer = styled.footer`
   position: fixed;
   bottom: 0;
-  background-color: #0d0b4a;
+  background-color: rgba(13, 11, 74, 0.8);
   text-align: center;
   height: 2em;
   padding: .5em;
@@ -61,17 +78,17 @@ function ListTripsPage() {
           {trip.name}
         </h3>
         <h4>
-          {trip.planet} 
+          Planeta: {trip.planet} 
         </h4>
-        <p>
-          {trip.durationInDays}
-        </p>
-        <p>
-          {trip.date}
-        </p>
-        <p>
+        <span>
+          Duaração: {trip.durationInDays} dias
+        </span>
+        <span>
+          Data de partida: {trip.date}
+        </span>
+        <span>
           {trip.description}
-        </p>
+        </span>
         <ButtonTrip onClick={()=>{RoutePages.application(navigate)}}>
             Viaje conosco
         </ButtonTrip>

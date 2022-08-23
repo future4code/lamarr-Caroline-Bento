@@ -42,9 +42,7 @@ const Form = styled.form `
     border-radius: 0.5em;
   }
 `
-const InputText = styled.input `
-    height: 4em;
-`
+
 const Button = styled.button`
   margin:2em 1em;
   width: 20%;
@@ -59,7 +57,7 @@ const Button = styled.button`
 function ApplicationFormPage() {
   const navigate = useNavigate();
   const pathParams = useParams();
-  const [form, onChange, clear] = useForm({name:'', age:'', applicationText:'', profession:'', country:''})
+  const [form, onChange, clear] = useForm({name:'', age:'', profession:'', country:'', applicationText: ''})
   
   const applicationTrip = (e) => {
     e.preventDefault()
@@ -86,7 +84,7 @@ function ApplicationFormPage() {
           </label>
           <input 
           id='nameUser'
-          name="nameUSer"
+          name="name"
           type="text"
           value = {form.name}
           onChange={onChange}
@@ -98,7 +96,7 @@ function ApplicationFormPage() {
           </label>
           <input 
           id="ageUser"
-          name = "ageUser"
+          name = "age"
           type= "number"
           min={18}
           value = {form.age}
@@ -130,17 +128,15 @@ function ApplicationFormPage() {
           
           required
           />
-          <label htmlFor = "textApplication">
+          <label htmlFor = "applicationText">
             Diga, em poucas palavras, o por que de ser escolhido:
           </label>
-          <InputText
-          name="textApplication"
-          id="textApplication"
-          type="text"
+          <input
+          name="applicationText"
+          id="applicationText"
           value = {form.applicationText}
           onChange={onChange}
-          pattern='^.{6,}$'
-          title='Min. de 6 caracteres'
+
           required
           />
         <Button onClick={()=>RoutePages.toBack(navigate)}>

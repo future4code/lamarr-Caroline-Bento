@@ -11,22 +11,25 @@ align-items: center;
 
   
   main{
-    margin: 2em 0;
+    margin: 3em 0 0 0;
     text-align: center;
     
     h1{
-      margin: 1em 0 0 0;
+      margin: 1em 0 1em 0;
+    }
+    h2{
+      margin: 1em 0 1em 0;
     }
 }
   `
 const Button = styled.button`
   flex-wrap: wrap;
-  margin:1em 1em 0 0;
+  margin:2em 1em 0 0;
   width: 50%;
   cursor: pointer;
   &:hover{
     color: #fff;
-    background-color: #0d0b4a;
+    background-color: rgba(56, 59, 87, 0.6);
     transition: .5s;
   }
 `
@@ -34,9 +37,9 @@ const Button = styled.button`
 const Header = styled.header`
     height: 14vh;
     margin: 0;
-    padding: 1em;
+    padding: 1em 0;
     text-align: center;
-    background-color:#0d0b4a;
+    background-color:rgba(13, 11, 74, 0.8);
 `
 const TitleSite = styled.h1`
   font-family: 'Source Code Pro', monospace;
@@ -47,11 +50,10 @@ const TitleSite = styled.h1`
 const Footer = styled.footer`
   position: fixed;
   bottom: 0;
-  background-color: #0d0b4a;
+  background-color: rgba(13, 11, 74, 0.8);
   text-align: center;
   height: 2em;
   padding: .5em;
-
 `
 
 function HomePage() {

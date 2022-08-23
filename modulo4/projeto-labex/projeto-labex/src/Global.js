@@ -18,7 +18,7 @@ export default createGlobalStyle `
             font-size: 1em;
             border: none;
             border-radius: 0.5em;
-            background-color: #FFFAFA;
+            background-color: rgba(255, 250, 250);
         }
         
     }

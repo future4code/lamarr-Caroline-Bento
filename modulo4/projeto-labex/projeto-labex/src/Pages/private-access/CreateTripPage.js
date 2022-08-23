@@ -50,7 +50,7 @@ const Button = styled.button`
   cursor: pointer;
   &:hover{
     color: #fff;
-    background-color: #0d0b4a;
+    background-color: rgba(56, 59, 87, 0.6);
     transition: .5s;
   }
 `
