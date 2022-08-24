@@ -8,20 +8,23 @@ import {baseUrl} from '../../constants/constants'
 function TripDetailsPage() {
   useProtectedPage()
   const navigate = useNavigate()
-  const pathParams = useParams()
-  const [detailTrip, loading, errorTrip] = useRequestData(`${baseUrl}/trip/${pathParams.id}`)
+  const {id} = useParams()
+ 
+  
+
+  const [detailTrip, loading, errorTrip] = useRequestData(`${baseUrl}trip/${id}`)
   useEffect(() => {
     const token = localStorage.getItem('token')
    
     axios.get(
-      `${baseUrl}trip/${pathParams.id}`, {
+      `${baseUrl}trip/${id}`, {
       headers: {
         auth: token
       }
     }
     )
       .then((response) => {
-        console.log(response.data)
+       console.log(response.data)
       }
       ).catch((error) => {
         console.log(error.response)
@@ -55,7 +58,7 @@ function TripDetailsPage() {
             Detalhes de viagens
         </h1>
         
-        {loading && 'Carregando viagens disponíveis...'}
+        {loading && 'Carregando viagem...'}
         <div>
           {!loading && detailTrip && listDatailTrip}
         </div>

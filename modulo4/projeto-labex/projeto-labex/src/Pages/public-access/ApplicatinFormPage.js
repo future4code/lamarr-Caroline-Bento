@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import {useForm} from '../../hooks/useForm'
 import { baseUrl } from '../../constants/constants';
 import axios from 'axios';
+import {useRequestData} from '../../hooks/useRequestData'
 const ContainerForm = styled.div `
   width: 100%;
   display: flex;
@@ -71,6 +72,12 @@ function ApplicationFormPage() {
       console.log(error.message)})
       clear()
   }
+  const [dataTrip] = useRequestData(
+    `${baseUrl}trips`
+  );
+  const tripsSelect = dataTrip&&dataTrip.trips.map((data) => {
+    return <option key={data.id}>{data.name}</option>
+})
 
     return (
       <ContainerForm>
@@ -78,6 +85,13 @@ function ApplicationFormPage() {
             Inscreva-se para sua viagem dos sonhos
         </h1>
         <Form onSubmit={applicationTrip}>
+          <label htmlFor = "select">
+            Escolha sua viagem:
+          </label>
+          <select id='select'>
+            <option>Escolha uma opção</option>
+            {tripsSelect}
+          </select>
         
           <label htmlFor="nameUser">
             Nome Completo:

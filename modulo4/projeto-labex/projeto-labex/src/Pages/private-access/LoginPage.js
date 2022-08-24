@@ -20,7 +20,7 @@ const ContainerForm = styled.div `
 `
 const Form = styled.form `
   display: flex;
-  margin: 8em 0 1em 0;
+  margin: 5em 0 4em 0;
   padding: 1.5em;
   width: 30%;
   flex-wrap: wrap;
@@ -40,8 +40,8 @@ const Form = styled.form `
   }
 `
 const Button = styled.button`
-  margin:2em 3.5em;
-  width: 20%;
+  margin:1em 3.5em;
+  width: 20vw;
   cursor: pointer;
   &:hover{
     color: #fff;

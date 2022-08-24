@@ -15,6 +15,17 @@ const ContainerPageTrips = styled.div `
     background-color: rgba(13, 11, 74, 0.8);
     width: 100%;
   }
+  
+  h2{
+    text-align: center;
+    
+  }
+
+  p{
+    text-align: center;
+    padding: 2em 0;
+  }
+
   div{
     display: flex;
     flex-direction: column;
@@ -49,7 +60,7 @@ const Button = styled.button`
 `
 const ButtonTrip = styled.button`
   
-  margin:2em 1em;
+  margin:1em 0 5em 0;
   width: 20vw;
   cursor: pointer;
   &:hover{
@@ -89,9 +100,7 @@ function ListTripsPage() {
         <span>
           {trip.description}
         </span>
-        <ButtonTrip onClick={()=>{RoutePages.application(navigate)}}>
-            Viaje conosco
-        </ButtonTrip>
+        
         
       </ContainerAllTrips>
     )
@@ -102,10 +111,16 @@ function ListTripsPage() {
       <h1>
         Escolha sua viagem dos sonhos!
       </h1>
+      
 
       <Button onClick={()=>{RoutePages.toBack(navigate)}}>
             voltar
       </Button>
+      
+      <h2>Viagens disponíveis:</h2>
+      <p>
+        Desça até o final da página para se aplicar à viagem da sua vida.
+      </p>
       
       {loadingList && 'Lista de viagens carregando...'}
       <div>
@@ -113,7 +128,10 @@ function ListTripsPage() {
       </div>
 
       {!loadingList && !dataTripList && errorTrips}
-           
+      
+      <ButtonTrip onClick={()=>{RoutePages.application(navigate)}}>
+            Viaje conosco
+      </ButtonTrip>
       <Footer>
         <p>Todos os direitos reservados.</p>
       </Footer>
