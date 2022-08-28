@@ -23,7 +23,7 @@ export const createTripPage = (navigate) => {
 }
 
 export const tripDetailsPage = (navigate) => {
-    navigate('/admin/trip/:id')
+    navigate(`/admin/trip/:id`)
 }
 
 export const toBack = (navigate) => {

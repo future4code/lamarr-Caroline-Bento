@@ -8,12 +8,12 @@ export default createGlobalStyle `
     }
 
     body {
-        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Silkscreen', cursive;
         background: url(${imgBackground});
         color: #ffff;
         button{
             padding: .6em;
-            font-family: 'Ubuntu', sans-serif;
+            font-family: 'Silkscreen', cursive;
             font-weight: 600;
             font-size: 1em;
             border: none;

@@ -5,94 +5,41 @@ import { baseUrl } from '../../constants/constants';
 import { useProtectedPage } from '../../hooks/useProtectedPage';
 import {useRequestData} from '../../hooks/useRequestData'
 import * as RoutePages from '../../Rotas/Coodinator'
-import styled from 'styled-components'
-
-const ContainerAdmin = styled.div `
-  header{
-    display: flex;
-    flex-direction: column;
-    h1 {
-      width: 100%;
-      text-align: center;
-      padding: 1em 0 1em 0;
-      background-color: rgba(13, 11, 74, 0.8);
-      }
-      div{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        margin: 2em 0 0 0;
-        button {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          
-        }
-
-      }
-    }
-    h2{
-      margin:2em 0;
-      width: 100%;
-      text-align: center;
-      padding: 1em 0 1em 0;
-      background-color: rgba(13, 11, 74, 0.8);
-    }
-  main {
-    display: flex;
-    width: 30vw;
-
-    div{
-       
-    
-    }
-
-  }
-
-`
-const ListTrip = styled.div `
-  border: 2px solid #FFFAFA;
-  border-radius: 1.5em;
-  padding: 1em;
-  background-color: rgba(1, 0, 18, 0.8);
-  
-  button{
-    margin: 1em 1em 0 0;
-    width: 10vw;
-    cursor: pointer;
-    &:hover{
-      color: #fff;
-      background-color: rgba(56, 59, 87, 0.6);
-      transition: .5s;
-    }
-  }
-`
-const Button = styled.button`
-  
-  width: 15vw;
-    cursor: pointer;
-  &:hover{
-    color: #fff;
-    background-color: rgba(56, 59, 87, 0.6);
-    transition: .5s;
-  }
-`
-const Footer = styled.footer`
-  position: fixed;
-  
-  bottom: 0;
-  background-color: rgba(13, 11, 74, 0.8);
-  text-align: center;
-  height: 2em;
-  padding: .5em 0 0 0;
-
-`
+import {ListTrip, ContainerAdmin, DivListTrips, Button, DivButton, Footer} from '../../stylesPage/styleAdmin'
 
 function AdminHomePage() {
   useProtectedPage()
+
   const navigate = useNavigate();
-  const [dataTripList, loadingList, errorTrips] = useRequestData(`${baseUrl}trips`)
- 
+  const [dataTripList, loadingList, errorTrips, getTrips] = useRequestData(`${baseUrl}trips`)
+  
+
+  const deleteTrip = (id, name) => {
+
+    const token = localStorage.getItem("token")
+
+    if (window.confirm(`Você tem certeza que quer deletar a viagem ${name}?`)) {
+        axios.delete(`${baseUrl}trips/${id}`, {
+          headers:{
+              auth: token
+          }
+      }) 
+        .then((response) => {
+            console.log(response.data)
+            alert(`Viagem ${name} deletada`)
+            getTrips()
+        })
+        .catch((error) => {
+            console.log(error.message)
+            alert("Algo deu errado")
+        })
+    }
+}
+    const tripDetails = (id) => {
+      localStorage.setItem("id", id)
+      navigate(`/admin/trip/${id}`)
+    }
+
   const tripList = dataTripList && dataTripList.trips.map((trip) => {
     return (
       <ListTrip key={trip.id}>
@@ -111,14 +58,14 @@ function AdminHomePage() {
         <p>
           {trip.description}
         </p>
-       <div>
-          <button onClick={() => { RoutePages.tripDetailsPage(navigate) }}>
+       <DivButton>
+          <button onClick={() => tripDetails(trip.id)}>
               Ver mais
           </button>
-          <button>
+          <button onClick={() => deleteTrip(trip.id, trip.name)}>
               Deletar
           </button>
-        </div>
+        </DivButton>
         
       </ListTrip>
     )
@@ -165,14 +112,14 @@ function AdminHomePage() {
       </h2>
     <main>
       {loadingList && 'Lista de viagens carregando...'}
-      <div>
+      <DivListTrips>
         {!loadingList && dataTripList && tripList}
-      </div>
+      </DivListTrips>
 
       {!loadingList && !dataTripList && errorTrips}
       </main>
       <Footer>
-        <p>Todos os direitos reservados.</p>
+        <p>Todos os direitos reservados. Copyright © 2022.</p>
       </Footer>
       
 

@@ -5,55 +5,7 @@ import { baseUrl } from '../../constants/constants';
 import { useForm } from '../../hooks/useForm';
 import { useProtectedPage } from '../../hooks/useProtectedPage';
 import * as RoutePages from '../../Rotas/Coodinator'
-import styled from 'styled-components'
-
-const ContainerForm = styled.div `
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h1{
-    margin: 1.3em 0;
-    text-align: center;
-  }
-`
-const Form = styled.form `
-  display: flex;
-  margin: 1em;
-  padding: 1.5em;
-  width: 30%;
-  flex-wrap: wrap;
-  border: 2px solid ;
-  border-radius: 1em;
-
-  select{
-    width: 90%;
-    margin: .3em 0;
-    padding: .4em ;
-    border: none;
-    border-radius: 0.5em;
-  }
-  label{
-    margin: .5em 0 0 0;
-  }
-  input {
-    width: 90%;
-    margin: .3em 0;
-    padding: .4em ;
-    border: none;
-    border-radius: 0.5em;
-  }
-`
-const Button = styled.button`
-  margin:2em 3.5em;
-  width: 20%;
-  cursor: pointer;
-  &:hover{
-    color: #fff;
-    background-color: rgba(56, 59, 87, 0.6);
-    transition: .5s;
-  }
-`
+import {ContainerForm, Form, Button, DivButton, Footer} from '../../stylesPage/styleCreateTrip'
 
 function CreateTripPage() {
   useProtectedPage()
@@ -145,17 +97,21 @@ function CreateTripPage() {
           required
           >
           </input>
-          
-          <Button
-          type='onSubmit'
-          >
-              criar
-          </Button>
-          <Button onClick={()=>{RoutePages.toBack(navigate)}}>
-              voltar
-          </Button>
+          <DivButton>
+            <Button
+            type='onSubmit'
+            >
+                criar
+            </Button>
+            <Button onClick={()=>{RoutePages.toBack(navigate)}}>
+                voltar
+            </Button>
+          </DivButton>
+        
         </Form>
-       
+        <Footer>
+          <p>Todos os direitos reservados. Copyright © 2022.</p>
+        </Footer>
       </ContainerForm>
       
     );
