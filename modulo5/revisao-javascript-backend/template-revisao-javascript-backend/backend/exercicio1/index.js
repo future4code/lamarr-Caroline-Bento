@@ -9,8 +9,8 @@ function converteCelciusFarenheit({ n, l }) {
 
   const result = n * (9 / 5) + 32;
   const phrase = `${n}° Celsius é equivalente a ${result}°${l} Farenheit.`;
-  if (l !== "F" || n !== 30) {
-    return `Erro. Parâmetro inválido (${l || n}).`;
+  if (l != "F" || n != 30) {
+    return `Erro. Parâmetro inválido (${l}).`;
   } else {
     return phrase;
   }
@@ -23,7 +23,7 @@ function converteCelciusKelvin({ n, l }) {
   const result = n + 273.15;
   const phrase = `${n}° Celsius é equivalente a ${result} ${l} Kelvin.`;
   if (l !== "K" || n !== 30) {
-    return `Erro. Parâmetro inválido (${l || n}).`;
+    return `Erro. Parâmetro inválido (${l}).`;
   } else {
     return phrase;
   }

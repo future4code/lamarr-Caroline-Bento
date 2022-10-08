@@ -7,12 +7,16 @@ const listClients = [
   { id: 4, nome: "Fulana" },
 ];
 
-let client = { id: 2, nome: "Agostinho" };
-
-if (client.id === listClients) {
-  return "Erro. Parâmetro inválido (id já existe)";
-} else {
-  listClients.push(client);
-  
+function clientVerification(id, name) {
+  let index = listClients.findIndex(c => c.id == id)
+  if(index < 0) {
+    listClients.push({ id: id, nome: name});
+  }else {
+    return `Erro. Parâmetro inválido (id:${id} já existe)`
+    
+  }
 }
-console.log("Lista de clientes Atualizada:", listClients);
+
+clientVerification(2, "Agostinho")
+
+console.log("Lista de clientes:", listClients)
