@@ -1,0 +1,13 @@
+
+
+### get all users
+GET http://localhost:3003/users
+
+### get users types
+GET http://localhost:3003/users/teacher
+
+### get ordernation
+GET http://localhost:3003/users_ordenation?sort=type&order=DESC
+
+### get pagination
+GET http://localhost:3003/users_pagination?size=3&page=2
