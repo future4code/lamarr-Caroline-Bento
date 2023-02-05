@@ -36,4 +36,8 @@ Content-Type: application/json
 }
 
 ### Exercício 6 - Get user purchases
-GET http://localhost:3003/users/201/purchases
+GET http://localhost:3003/users/301/purchases
+
+###
+
+GET http://localhost:3003/purchases

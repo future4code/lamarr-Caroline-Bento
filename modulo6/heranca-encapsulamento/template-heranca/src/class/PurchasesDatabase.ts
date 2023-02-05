@@ -1,3 +1,4 @@
+import { knex } from 'knex';
 import {
   TABLE_PRODUCTS,
   TABLE_PURCHASES,
@@ -28,13 +29,13 @@ export class PurchasesDatabase extends BaseDatabase {
       PurchasesDatabase.TABLE_PURCHASES
     )
       .select(
-        `${TABLE_USERS}.email,  ${TABLE_PRODUCTS}.name AS product_name,
-        ${TABLE_PRODUCTS}.price AS product_price,
-        ${TABLE_PURCHASES}.quantity AS product_quantity,
-        ${TABLE_PURCHASES}.total_price`
+        `${TABLE_USERS}.email`,
+        `${TABLE_PRODUCTS}.name` as `product_name`
       )
-      .joinRaw(`${TABLE_USERS}`)
-      .whereLike(`${TABLE_PURCHASES}.user_id = ${TABLE_USERS}.id`)
+      .from(`${TABLE_PURCHASES}`)
+      .join(`${TABLE_USERS}`, function(){
+        this.on(`${TABLE_PURCHASES}.product_id`,`=`, `${TABLE_PRODUCTS}.id`) 
+      })
       .whereLike("id", `${id}`);
     return result;
   }
