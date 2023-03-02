@@ -1,0 +1,18 @@
+
+
+POST http://localhost:3003/createUser 
+Content-Type: application/json
+
+{
+    "name": "Viera Matozz",
+    "email": "mtzvieira@email.com",
+    "password": "mtz12345"
+}
+
+###
+GET http://localhost:3003/all
+Content-Type: application/json
+
+###
+DELETE  http://localhost:3003/1677685276190
+Content-Type: application/json
