@@ -1,0 +1,28 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "Edmundo Raimundo",
+    "email": "raimundin@email.com",
+    "password": "raimuMundo123"
+}
+
+
+###
+GET http://localhost:3003/user/all
+
+
+###
+POST http://localhost:3003/movie/create
+Content-Type: application/json
+
+{
+    "title": "2012",
+    "description": "Filme do fim do mundo.",
+    "durationInMinutes": 94,
+    "yearOfRelease": 2012
+}
+
+
+###
+GET http://localhost:3003/movie/all
