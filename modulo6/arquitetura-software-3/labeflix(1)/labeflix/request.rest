@@ -1,0 +1,28 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "Filadelfia Estefani",
+    "email": "filo.fia@email.com",
+    "password": "estefani123"
+}
+
+
+###
+GET http://localhost:3003/user/all
+
+
+###
+POST http://localhost:3003/movie/create
+Content-Type: application/json
+
+{
+    "title": "AS branquelas",
+    "description": "Segura meu poodle.",
+    "durationInMinutes": 109,
+    "yearOfRelease": 2004
+}
+
+
+###
+GET http://localhost:3003/movie/all
